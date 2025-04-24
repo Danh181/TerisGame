@@ -1,4 +1,4 @@
-﻿namespace TerisGame
+﻿namespace TerisGame.BlockData
 {
     public class LBlock : Block
     {

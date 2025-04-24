@@ -1,6 +1,6 @@
-﻿namespace TerisGame
+﻿namespace TerisGame.BlockData
 {
-    public class IBlock: Block
+    public class IBlock : Block
     {
         private readonly Position[][] tiles = new Position[][]
         {

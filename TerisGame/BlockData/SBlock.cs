@@ -1,4 +1,4 @@
-﻿namespace TerisGame
+﻿namespace TerisGame.BlockData
 {
     public class SBlock : Block
     {
@@ -11,7 +11,7 @@
         };
 
         public override int Id => 5;
-        protected override Position StartOffset => new Position(0,3);
+        protected override Position StartOffset => new Position(0, 3);
         protected override Position[][] Tiles => tiles;
     }
 }
