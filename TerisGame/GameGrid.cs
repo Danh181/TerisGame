@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Documents;
-
-namespace TerisGame
+﻿namespace TerisGame
 {
     public class GameGrid
     {
@@ -96,6 +89,6 @@ namespace TerisGame
             return cleared;
         }
 
-
+       
     }
 }
