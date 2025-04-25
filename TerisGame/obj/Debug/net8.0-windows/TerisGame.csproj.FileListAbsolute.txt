@@ -19,3 +19,12 @@ D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\refint\Ter
 D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\TerisGame.pdb
 D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\TerisGame.genruntimeconfig.cache
 D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\ref\TerisGame.dll
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\bin\Debug\net8.0-windows\sounds\ChangePositionSong.mp3
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\bin\Debug\net8.0-windows\sounds\DropBlockSong.mp3
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\bin\Debug\net8.0-windows\sounds\LoseSong.mp3
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\bin\Debug\net8.0-windows\sounds\RotateSong.mp3
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\bin\Debug\net8.0-windows\sounds\ScoreSong.mp3
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\bin\Debug\net8.0-windows\sounds\ThemeSong.mp3
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\Interop.WMPLib.dll
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\TerisGame.csproj.ResolveComReference.cache
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\TerisGame_Content.g.cs

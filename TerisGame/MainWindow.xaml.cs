@@ -16,6 +16,23 @@ namespace TerisGame
     /// </summary>
     public partial class MainWindow : Window
     {
+        private MediaPlayer bgm = new MediaPlayer();
+        private void PlaySound(string relativePath)
+        {
+            var player = new MediaPlayer();
+            player.Open(new Uri($"sounds/{relativePath}", UriKind.Relative));
+            player.Volume = 1.0;
+            player.Play();
+        }
+
+        private void PlayGameOverSound()
+        {
+            var player = new MediaPlayer();
+            player.Open(new Uri("sounds/LoseSong.mp3", UriKind.Relative));
+            player.Volume = 0.8;
+            player.Play();
+        }
+
         private readonly ImageSource[] titleImages = new ImageSource[]
         {
             new BitmapImage( new Uri("assets/TileEmpty.png", UriKind.Relative)),
@@ -51,6 +68,10 @@ namespace TerisGame
         {
             InitializeComponent();
             imageControls = SetUpGameCanvas(gameState.GameGrid);
+            bgm.Open(new Uri("sounds/ThemeSong.mp3", UriKind.Relative));
+            bgm.Volume = 0.2;
+            bgm.MediaEnded += (s, e) => { bgm.Position = TimeSpan.Zero; bgm.Play(); };
+            bgm.Play();
         }
 
         private Image[,] SetUpGameCanvas(GameGrid grid)
@@ -149,7 +170,7 @@ namespace TerisGame
                 gameState.MoveBlockDown();
                 Draw(gameState);
             }
-
+            PlayGameOverSound();
             GameOverMenu.Visibility = Visibility.Visible;
             FinalScore.Text = $"Score: {gameState.Score}";
         }
@@ -174,15 +195,18 @@ namespace TerisGame
                     break;
                 case Key.C:
                     gameState.RotateBlockCW();
+                    PlaySound("RotateSong.mp3");
                     break;
                 case Key.Z:
                     gameState.RotateBlockCCW();
+                    PlaySound("RotateSong.mp3");
                     break;
                 case Key.X:
                     gameState.HoldBlock();
                     break;
                 case Key.Space:
                     gameState.DropBlock();
+                    PlaySound("DropBlockSong.mp3");
                     break;
                 default:
                     return;

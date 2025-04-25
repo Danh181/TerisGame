@@ -1,4 +1,5 @@
 ﻿using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace TerisGame
 {
@@ -33,12 +34,17 @@ namespace TerisGame
         public Block HeldBlock { get; private set; }
         public bool CanHold { get; private set; }
 
+        private MediaPlayer ScoreSound;
+
         public GameState()
         {
             GameGrid = new GameGrid(22, 10);
             BlockQueue = new BlockQueue();
             CurrentBlock = BlockQueue.GetAndUpdate();
-            CanHold = true;    
+            CanHold = true;
+            
+            ScoreSound = new MediaPlayer();
+            ScoreSound.Open(new Uri ("sounds/ScoreSong.mp3", UriKind.Relative));
         }
 
         private bool BlockFits()
@@ -118,15 +124,28 @@ namespace TerisGame
         {
             return !(GameGrid.IsRowEmpty(0) && GameGrid.IsRowEmpty(1));
         }
-        
-        private void PlaceBlock()
+
+        private int PlaceBlock()
         {
-            foreach(Position p in CurrentBlock.TilePositions())
+            foreach (Position p in CurrentBlock.TilePositions())
             {
-                GameGrid[p.Row, p.Column] =  CurrentBlock.Id;
+                GameGrid[p.Row, p.Column] = CurrentBlock.Id;
             }
 
-            Score += GameGrid.ClearFullRows();
+            int rowsCleared = GameGrid.ClearFullRows();
+            Score += rowsCleared;
+
+            // Chỉ phát âm thanh nếu có ít nhất 1 hàng bị xóa
+            if (rowsCleared > 0)
+            {
+                // Dừng âm thanh nếu đang phát
+                if (ScoreSound.CanPause)
+                {
+                    ScoreSound.Stop();
+                }
+                ScoreSound.Play();  // Phát âm thanh khi có hàng bị xóa
+                ScoreSound.Position = TimeSpan.Zero;  // Reset về thời gian bắt đầu
+            }
 
             if (IsGameOver())
             {
@@ -137,7 +156,11 @@ namespace TerisGame
                 CurrentBlock = BlockQueue.GetAndUpdate();
                 CanHold = true;
             }
+
+            return rowsCleared;
         }
+
+
 
         public void MoveBlockDown()
         {
