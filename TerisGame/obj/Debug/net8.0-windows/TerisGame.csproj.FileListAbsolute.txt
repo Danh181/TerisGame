@@ -28,3 +28,4 @@ D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\bin\Debug\net8.0-windows\sounds\The
 D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\Interop.WMPLib.dll
 D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\TerisGame.csproj.ResolveComReference.cache
 D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\obj\Debug\net8.0-windows\TerisGame_Content.g.cs
+D:\CODE\Dotnet\Make Game\TerisGame\TerisGame\bin\Debug\net8.0-windows\sounds\SoXoSound.mp3

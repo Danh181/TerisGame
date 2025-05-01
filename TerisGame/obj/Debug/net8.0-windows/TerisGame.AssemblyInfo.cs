@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TerisGame")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f2d39dcba55bec4fd6ffe09ece87fe64091edbc9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+32dbf49998c1b88ae25556a1c5c13ff79b7a75f5")]
 [assembly: System.Reflection.AssemblyProductAttribute("TerisGame")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TerisGame")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

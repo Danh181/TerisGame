@@ -33,6 +33,7 @@
     <None Remove="sounds\LoseSong.mp3" />
     <None Remove="sounds\RotateSong.mp3" />
     <None Remove="sounds\ScoreSong.mp3" />
+    <None Remove="sounds\SoXoSound.mp3" />
     <None Remove="sounds\ThemeSong.mp3" />
   </ItemGroup>
 
@@ -84,6 +85,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="sounds\ScoreSong.mp3">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sounds\SoXoSound.mp3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="sounds\ThemeSong.mp3">

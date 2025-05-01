@@ -35,6 +35,7 @@ namespace TerisGame
         public bool CanHold { get; private set; }
 
         private MediaPlayer ScoreSound;
+        public bool IsPause { get; private set; }
 
         public GameState()
         {
@@ -62,6 +63,10 @@ namespace TerisGame
 
         public void HoldBlock()
         {
+            if (IsPause || GameOver)
+            {
+                return;
+            }
             if (!CanHold)
             {
                 return;
@@ -77,12 +82,20 @@ namespace TerisGame
                 CurrentBlock = HeldBlock;
                 HeldBlock = tmp;
             }
+            if (IsPause || GameOver)
+            {
+                return;
+            }
 
             CanHold = false;
         }
 
         public void RotateBlockCW()
         {
+            if (IsPause || GameOver)
+            {
+                return;
+            }
             CurrentBlock.RotateCW();
             if (!BlockFits())
             {
@@ -92,8 +105,11 @@ namespace TerisGame
 
         public void RotateBlockCCW()
         {
+            if (IsPause || GameOver)
+            {
+                return;
+            }
             CurrentBlock.RotateCCW();
-
             if (!BlockFits())
             {
                 CurrentBlock.RotateCW();
@@ -102,8 +118,11 @@ namespace TerisGame
 
         public void MoveBlockLeft()
         {
+            if (IsPause || GameOver)
+            {
+                return;
+            }
             CurrentBlock.Move(0, -1);
-
             if (!BlockFits())
             {
                 CurrentBlock.Move(0, 1);
@@ -112,8 +131,11 @@ namespace TerisGame
 
         public void MoveBlockRight()
         {
+            if (IsPause || GameOver)
+            {
+                return;
+            }
             CurrentBlock.Move(0, 1);
-
             if (!BlockFits())
             {
                 currentBlock.Move(0, -1);
@@ -164,8 +186,11 @@ namespace TerisGame
 
         public void MoveBlockDown()
         {
+            if (IsPause || GameOver)
+            {
+                return;
+            }
             CurrentBlock.Move(1, 0);
-            
             if (!BlockFits())
             {
                 CurrentBlock.Move(-1, 0);
@@ -196,8 +221,17 @@ namespace TerisGame
 
         public void DropBlock()
         {
+            if (IsPause || GameOver)
+            {
+                return;
+            }
             CurrentBlock.Move(BlockDropDistance(), 0);
             PlaceBlock() ;
+        }
+
+        public void PauseGame()
+        {
+            IsPause = !IsPause;
         }
     }
 }

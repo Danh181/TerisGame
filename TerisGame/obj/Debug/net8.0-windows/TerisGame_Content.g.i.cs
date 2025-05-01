@@ -13,6 +13,7 @@
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/losesong.mp3")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/rotatesong.mp3")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/scoresong.mp3")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/soxosound.mp3")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sounds/themesong.mp3")]
 
 

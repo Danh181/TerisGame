@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Media;
+using System.Numerics;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -63,13 +65,17 @@ namespace TerisGame
         private readonly int delayDecrease = 25;
 
         private GameState gameState = new GameState();
+        private bool CanPlaySound()
+        {
+            return !gameState.IsPause && !gameState.GameOver;
+        }
 
         public MainWindow()
         {
             InitializeComponent();
             imageControls = SetUpGameCanvas(gameState.GameGrid);
-            bgm.Open(new Uri("sounds/ThemeSong.mp3", UriKind.Relative));
-            bgm.Volume = 0.2;
+            bgm.Open(new Uri("sounds/SoXoSound.mp3", UriKind.Relative));
+            bgm.Volume = 1;
             bgm.MediaEnded += (s, e) => { bgm.Position = TimeSpan.Zero; bgm.Play(); };
             bgm.Play();
         }
@@ -165,11 +171,19 @@ namespace TerisGame
             Draw(gameState);
             while (!gameState.GameOver)
             {
+                if (gameState.IsPause)
+                {
+                    await Task.Delay(1);
+                    bgm.Pause();
+                    continue;
+                }
+                bgm.Play();
                 int delay = Math.Max(minDelay, maxDelay - (gameState.Score * delayDecrease));
-                await Task.Delay(delay);
+                await Task.Delay(500);
                 gameState.MoveBlockDown();
                 Draw(gameState);
             }
+            bgm.Stop();
             PlayGameOverSound();
             GameOverMenu.Visibility = Visibility.Visible;
             FinalScore.Text = $"Score: {gameState.Score}";
@@ -186,27 +200,33 @@ namespace TerisGame
             {
                 case Key.Left:
                     gameState.MoveBlockLeft();
+                    if (CanPlaySound()) PlaySound("ChangePositionSong.mp3");
                     break;
                 case Key.Right:
-                    gameState.MoveBlockRight(); 
+                    gameState.MoveBlockRight();
+                    if (CanPlaySound()) PlaySound("ChangePositionSong.mp3");
                     break;
                 case Key.Down:
                     gameState.MoveBlockDown();
                     break;
                 case Key.C:
                     gameState.RotateBlockCW();
-                    PlaySound("RotateSong.mp3");
+                    if (CanPlaySound()) PlaySound("ChangePositionSong.mp3");
                     break;
                 case Key.Z:
                     gameState.RotateBlockCCW();
-                    PlaySound("RotateSong.mp3");
+                    if (CanPlaySound()) PlaySound("ChangePositionSong.mp3");
                     break;
                 case Key.X:
                     gameState.HoldBlock();
                     break;
                 case Key.Space:
                     gameState.DropBlock();
-                    PlaySound("DropBlockSong.mp3");
+                    if (CanPlaySound()) PlaySound("DropBlockSong.mp3");
+                    break;
+                case Key.P:
+                    gameState.PauseGame();
+                    PauseText.Visibility = gameState.IsPause ? Visibility.Visible : Visibility.Hidden;
                     break;
                 default:
                     return;
