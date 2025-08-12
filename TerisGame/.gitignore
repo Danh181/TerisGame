@@ -1,1 +1,9 @@
-﻿.vs/
+﻿# Visual Studio
+.vs/
+*.db
+
+# Build results
+bin/
+obj/
+*.dll
+*.pdb
